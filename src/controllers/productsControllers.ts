@@ -8,4 +8,11 @@ const findAll = async (req: Request, res: Response) => {
   return res.status(200).json(result);
 };
 
-export default { findAll };
+const setNewProduct = async (req: Request, res: Response) => {
+  const product = req.body;
+  const setProduct = new ProductsModels(connection);
+  const result = await setProduct.addProduct(product);
+  return res.status(201).json(result);
+}
+
+export default { findAll, setNewProduct };
